@@ -64,13 +64,33 @@ Targets have:
 
 1) Select all the assassins, sorted by number of kills.
 
+```
+SELECT * FROM assassins ORDER BY kills;
+```
+
 2) Select all of the assassins older than 30 years old.
+
+```
+SELECT * FROM assassins WHERE age > 30;
+```
 
 3) Select all of the contracts that can afford to pay Nikita Mears. (Budget >= her price)
 
+```
+SELECT * FROM contracts WHERE budget >= (SELECT price FROM assassins WHERE fullname='Nikita Mears');
+```
+
 4) Count the number of assassins that are capable of taking out Norman Stansfield. (Their rating >= his security level)
 
+```
+SELECT COUNT(*) FROM assassins WHERE rating >= (SELECT securitylevel FROM targets WHERE name='Norman Stansfield');
+```
+
 5) Get the total amount it would require to hire every available assassin.
+
+```
+SELECT SUM(price) FROM assassins;
+```
 
 6) Assign the following jobs to these assassins:
   * Jules Winnfield -> Butch Coolidge
