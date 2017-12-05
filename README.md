@@ -86,11 +86,11 @@ Targets have:
 
 8) Find the lowest total cost to complete all assigned contracts.
 
-9) Add a new contract: Snake Plisken, New York, (find a photo), security 5, budget 35, Client is Marcellus Wallace.
+9) Add a new contract: Snake Plissken, New York, (find a photo), security 5, budget 35, Client is Marcellus Wallace.
 
 10) Assign all assassins with a rate lower than the cost of the new contract to the new contract.
 
-11) Complete these contracts: The Jaguar, by the Jackal; Butch Coolidge, by Ghost Dog; Snake Plisken, by Nikita Mears. (Be sure to increment the number of kills!)
+11) Complete these contracts: The Jaguar, by the Jackal; Butch Coolidge, by Ghost Dog; Snake Plissken, by Nikita Mears. (Be sure to increment the number of kills!)
 
 12) Select all the completed contracts, showing only the assassins to be paid, and the amount paid to them. Then show the total cost of the completed contracts.
 
