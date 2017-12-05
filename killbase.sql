@@ -57,6 +57,17 @@ INSERT INTO assassins (fullname, weapon, contact, age, price, rating, kills)
 ('Nikita Mears', 'Silenced pistols', 'nikita@gmail.com', 28, 30, 7, 32),
 ('Pickle Rick', 'Lasers and office supplies', 'rsanchez@gmail.com', 60, 0, 8, 24);
 
+INSERT INTO codenames (assassinid, codename)
+  VALUES
+(1, 'The Jackal'),
+(2, 'Old Man'),
+(3, 'Ghost Dog'),
+(5, 'Baba Yaga'),
+(7, 'The Professional'),
+(8, 'Nikita'),
+(8, 'La Femme Nikita'),
+(9, 'Solenya');
+
 INSERT INTO clients (name)
   VALUES
   ('Marcellus Wallace'),
