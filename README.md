@@ -126,11 +126,15 @@ SELECT COUNT(DISTINCT(assassinid)) FROM assassin_contracts;
 
 ```
 INSERT INTO targets (name, location, photo, securitylevel) VALUES ('Snake Plissken', 'New York', 'https://goo.gl/6ySvig', 5);
+INSERT INTO contracts (targetid, clientid, budget) VALUES (
+  (SELECT id FROM targets WHERE name='Snake Plissken' LIMIT 1),
+  (SELECT id FROM clients WHERE name='Marcellus Wallace' LIMIT 1),
+  35);
 ```
 
 10) Assign all assassins with a rate lower than the cost of the new contract to the new contract.
 
-11) Complete these contracts: The Jaguar, by the Jackal; Butch Coolidge, by Ghost Dog; Snake Plisken, by Nikita Mears. (Be sure to increment the number of kills!)
+11) Complete these contracts: The Jaguar, by the Jackal; Butch Coolidge, by Ghost Dog; Snake Plissken, by Nikita Mears. (Be sure to increment the number of kills!)
 
 12) Select all the completed contracts, showing only the assassins to be paid, and the amount paid to them. Then show the total cost of the completed contracts.
 
