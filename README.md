@@ -36,17 +36,17 @@ Targets have:
 
 ### Assassins
 
-| Full name        | Code Names              | Weapon                     | Age | Price | Rating | Kills |
-|------------------|-------------------------|----------------------------|-----|-------|--------|-------|
-| Alexander Duggan | The Jackal              | Sniper rifle               | 31  | 45    | 7.5    | 28    |
-| Anton Chigurh    | Old Man                 | Pneumatic bolt gun         | 52  | 40    | 9      | 72    |
-|                  | Ghost Dog               | Pistol                     | 28  | 20    | 6.5    | 35    |
-| Jason Bourne     |                         | Parkour                    | 27  | 25    | 7      | 48    |
-| John Wick        | Baba Yaga               | Lots of guns               | 35  | 50    | 9.5    | 433   |
-| Jules Winnfield  |                         | Pistol                     | 26  | 15    | 6.5    | 13    |
-| Leon             | The Professional        | Everything                 | 41  | 30    | 8.5    | 87    |
-| Nikita Mears     | Nikita, La Femme Nikita | Silenced pistols           | 28  | 30    | 7      | 32    |
-| Pickle Rick      | Solenya                 | Lasers and office supplies | 60  | 0     | 8      | 24    |
+| Full name        | Code Names              | Weapon                     | Contact Info           | Age | Price | Rating | Kills |
+|------------------|-------------------------|----------------------------|------------------------|-----|-------|--------|-------|
+| Alexander Duggan | The Jackal              | Sniper rifle               | jackal@gmail.com       | 31  | 45    | 7.5    | 28    |
+| Anton Chigurh    | Old Man                 | Pneumatic bolt gun         | pneujackcity@gmail.com | 52  | 40    | 9      | 72    |
+|                  | Ghost Dog               | Pistol                     | ghostdog@gmail.com     | 28  | 20    | 6.5    | 35    |
+| Jason Bourne     |                         | Parkour                    | jb@gmail.com           | 27  | 25    | 7      | 48    |
+| John Wick        | Baba Yaga               | Lots of guns               | babayaga@gmail.com     | 35  | 50    | 9.5    | 433   |
+| Jules Winnfield  |                         | Pistol                     | bmf@gmail.com          | 26  | 15    | 6.5    | 13    |
+| Leon             | The Professional        | Everything                 | leon@gmail.com         | 41  | 30    | 8.5    | 87    |
+| Nikita Mears     | Nikita, La Femme Nikita | Silenced pistols           | nikita@gmail.com       | 28  | 30    | 7      | 32    |
+| Pickle Rick      | Solenya                 | Lasers and office supplies | rsanchez@gmail.com     | 60  | 0     | 8      | 24    |
 
 ### Contracts
 
@@ -58,7 +58,7 @@ Targets have:
 | Santino D'Antonio | Continental Hotel | https://goo.gl/fUPkYy           | 10              | Winston           | 25     |
 | Sonny Valerio     | Queens            | https://goo.gl/8DHYUS           | 4               | Ray Vargo         | 10     |
 
-(Hint: Create a text file with all the SQL commands to create and populate the table, then load it into psql.)
+(Hint: Create a text file with all the SQL commands to create and populate the table, then load it in like:  psql < killbase.sql)
 
 ## Exercises
 
@@ -102,9 +102,25 @@ SELECT SUM(price) FROM assassins;
   * Nikita Mears -> Norman Stansfield
   * Ghost Dog -> Butch Coolidge
 
+```
+INSERT INTO assassin_contracts (assassinid, contractid) VALUES
+  (6, 1),
+  (1, 2),
+  (5, 2),
+  (7, 3),
+  (9, 5),
+  (6, 4),
+  (8, 3),
+  (3, 1);
+```
+
 7) Count the number of currently contracted assassins.
 
-8) Find the lowest cost to complete all active contracts.
+```
+SELECT COUNT(DISTINCT(assassinid)) FROM assassin_contracts;
+```
+
+8) Find the lowest total cost to complete all active contracts.
 
 9) Add a new contract: Snake Plisken, New York, (find a photo), security 5, budget 35, Client is Marcellus Wallace.
 

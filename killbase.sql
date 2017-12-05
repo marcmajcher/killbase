@@ -36,13 +36,17 @@ CREATE TABLE contracts (
   targetid INTEGER REFERENCES targets,
   clientid INTEGER REFERENCES clients,
   budget INTEGER,
-  completed BOOLEAN,
+  completed BOOLEAN DEFAULT false,
   completedby INTEGER REFERENCES assassins
 );
 
+CREATE TABLE assassin_contracts (
+  assassinid INTEGER REFERENCES assassins,
+  contractid INTEGER REFERENCES contracts
+);
 
-insert into assassins (fullname, weapon, contact, age, price, rating, kills)
-  values
+INSERT INTO assassins (fullname, weapon, contact, age, price, rating, kills)
+  VALUES
 ('Alexander Duggan', 'Sniper rifle', 'jackal@gmail.com', 31, 45, 7.5, 28),
 ('Anton Chigurh', 'Pneumatic bolt gun', 'pneujackcity@gmail.com', 52, 40, 9, 72),
 ('', 'Pistol', 'ghostdog@gmail.com', 28, 20, 6.5, 35),
@@ -53,24 +57,24 @@ insert into assassins (fullname, weapon, contact, age, price, rating, kills)
 ('Nikita Mears', 'Silenced pistols', 'nikita@gmail.com', 28, 30, 7, 32),
 ('Pickle Rick', 'Lasers and office supplies', 'rsanchez@gmail.com', 60, 0, 8, 24);
 
-insert into clients (name)
-  values
+INSERT INTO clients (name)
+  VALUES
   ('Marcellus Wallace'),
   ('Concerto'),
   ('Mathilda'),
   ('Winston'),
   ('Ray Vargo');
 
-insert into targets (name, location, photo, securitylevel)
-  values
+INSERT INTO targets (name, location, photo, securitylevel)
+  VALUES
 ('Butch Coolidge', 'Los Angeles', 'https://goo.gl/LCquZj', 3),
 ('The Jaguar', 'Russian Embassy', 'https://goo.gl/6JWsiv', 9),
 ('Norman Stansfield', 'Manhattan', 'https://i.imgur.com/mdIk33E.jpg', 7),
 ('Santino D''Antonio', 'Continental Hotel', 'https://goo.gl/fUPkYy', 10),
 ('Sonny Valerio', 'Queens', 'https://goo.gl/8DHYUS', 4);
 
-insert into contracts (targetid, clientid, budget)
-  values
+INSERT INTO contracts (targetid, clientid, budget)
+  VALUES
 (1, 1, 40),
 (2, 2, 70),
 (3, 3, 35),
