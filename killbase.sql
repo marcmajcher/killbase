@@ -1,0 +1,78 @@
+DROP DATABASE IF EXISTS killbase;
+CREATE DATABASE killbase;
+\connect killbase
+
+CREATE TABLE assassins (
+  id SERIAL PRIMARY KEY,
+  fullname TEXT,
+  weapon TEXT,
+  contact TEXT,
+  price INTEGER,
+  rating FLOAT,
+  kills INTEGER,
+  age INTEGER
+);
+
+CREATE TABLE codenames (
+  assassinid INTEGER REFERENCES assassins,
+  codename TEXT
+);
+
+CREATE TABLE targets (
+  id SERIAL PRIMARY KEY,
+  name TEXT,
+  location TEXT,
+  photo TEXT,
+  securitylevel INTEGER
+);
+
+CREATE TABLE clients (
+  id SERIAL PRIMARY KEY,
+  name TEXT
+);
+
+CREATE TABLE contracts (
+  id SERIAL PRIMARY KEY,
+  targetid INTEGER REFERENCES targets,
+  clientid INTEGER REFERENCES clients,
+  budget INTEGER,
+  completed BOOLEAN,
+  completedby INTEGER REFERENCES assassins
+);
+
+
+insert into assassins (fullname, weapon, contact, age, price, rating, kills)
+  values
+('Alexander Duggan', 'Sniper rifle', 'jackal@gmail.com', 31, 45, 7.5, 28),
+('Anton Chigurh', 'Pneumatic bolt gun', 'pneujackcity@gmail.com', 52, 40, 9, 72),
+('', 'Pistol', 'ghostdog@gmail.com', 28, 20, 6.5, 35),
+('Jason Bourne', 'Parkour', 'jb@gmail.com', 27, 25, 7, 48),
+('John Wick', 'Lots of guns', 'babayaga@gmail.com', 35, 50, 9.5, 433),
+('Jules Winnfield', 'Pistol', 'bmf@gmail.com', 26, 15, 6.5, 13),
+('Leon', 'Everything', 'leon@gmail.com', 41, 30, 8.5, 87),
+('Nikita Mears', 'Silenced pistols', 'nikita@gmail.com', 28, 30, 7, 32),
+('Pickle Rick', 'Lasers and office supplies', 'rsanchez@gmail.com', 60, 0, 8, 24);
+
+insert into clients (name)
+  values
+  ('Marcellus Wallace'),
+  ('Concerto'),
+  ('Mathilda'),
+  ('Winston'),
+  ('Ray Vargo');
+
+insert into targets (name, location, photo, securitylevel)
+  values
+('Butch Coolidge', 'Los Angeles', 'https://goo.gl/LCquZj', 3),
+('The Jaguar', 'Russian Embassy', 'https://goo.gl/6JWsiv', 9),
+('Norman Stansfield', 'Manhattan', 'https://i.imgur.com/mdIk33E.jpg', 7),
+('Santino D''Antonio', 'Continental Hotel', 'https://goo.gl/fUPkYy', 10),
+('Sonny Valerio', 'Queens', 'https://goo.gl/8DHYUS', 4);
+
+insert into contracts (targetid, clientid, budget)
+  values
+(1, 1, 40),
+(2, 2, 70),
+(3, 3, 35),
+(4, 4, 25),
+(5, 5, 10);

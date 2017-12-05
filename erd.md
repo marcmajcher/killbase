@@ -6,14 +6,14 @@
      +----------+-------------------------+         +---------------------------------+
      | id       | serial primary key      |         |              CODENAMES          |
      | fullname | text                    |        /+------------+--------------------+
-     | codename | foreign key (codenames) +---------+ assassinid | serial primary key |
-    /| weapon   | text                    |        \| codename   | text               |
-+----+ contact  | text                    |         +------------+--------------------+
-|   \| price    | integer                 |
-|    | rating   | float                   |
+     | weapon   | text                    +---------+ assassinid | serial primary key |
+    /| contact  | text                    |        \| codename   | text               |
++----+ price    | integer                 |         +------------+--------------------+
+|   \| rating   | float                   |
 |    | kills    | integer                 |
-|    | age      | integer                 |         +---------------------------+
-|    +----------+-------------------------+         |        CLIENTS            |
+|    | age      | integer                 |
+|    +----------+-------------------------+         +---------------------------+
+|                                                   |        CLIENTS            |
 |                                                   +------+--------------------+
 |                                                   | id   | serial primary key +----------------+
 |                                                   | name | text               |                |
