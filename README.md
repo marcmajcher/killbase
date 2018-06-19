@@ -3,7 +3,7 @@
 Killbase is a job board for international assassins. Assassins and their clients can register with Killbase, and enter or sign up for jobs. Assassins can have zero or more code names, and can sign up for any number of contracts; a contract may also be open to any number of assassins.
 
 Assassins have:
-  * a full fame
+  * a full name
   * zero or more codenames
   * a weapon of choice
   * contact information
