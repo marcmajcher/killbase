@@ -15,7 +15,7 @@ INSERT INTO Assassins (name, weapon_of_choice, age, minimum_fee, rating, kills) 
 ('Nikita Mears', 'Silenced pistols', '28', '30', '7', '32'),
 ('Pickle Rick', 'Lasers and office supplies', '60', '0', '8', '24');
 
-CREATE TABLE Assassin_Codenames (assassin integer references Assassins (assassin_id), codename text); 
+CREATE TABLE Assassin_Codenames (assassin integer references assassins (assassin_id), codename text); 
 
 INSERT INTO Assassin_Codenames (assassin, codename) VALUES 
 ('1', 'The Jackal'),
@@ -23,7 +23,8 @@ INSERT INTO Assassin_Codenames (assassin, codename) VALUES
 ('3', 'Ghost Dog'),
 ('5', 'Baba Yaga'),
 ('7', 'The Professional'),
-('8', 'Nikita, La Femme Nikita'),
+('8', 'Nikita'),
+('8', 'La Femme Nikita'),
 ('9', 'Solenya');
 
 
@@ -59,6 +60,13 @@ INSERT INTO contracts (target, client, budget) VALUES
 ('3','3','35'),
 ('4','4','25'),
 ('5','5','10');
+
+TABLE assassins;
+TABLE assassin_codenames;
+TABLE clients;
+TABLE targets;
+TABLE contracts; 
+TABLE assassins_contracts; 
 
 
 
