@@ -1,4 +1,9 @@
---table one
+DROP DATABASE killbase;
+
+CREATE DATABASE killbase;
+
+\c killbase;
+
 create table assassins(
   id serial primary key,
   Full_Name text,
@@ -6,7 +11,7 @@ create table assassins(
   Weapon text,
   Age integer,
   Price numeric,
-  Rating numeric(3,1),
+  Rating numeric(2,1),
   Kills integer);
 
 
@@ -28,18 +33,49 @@ insert into assassins(Full_Name, Code_Names, Weapon, Age, Price, Rating, Kills) 
     target_location text,
     target_photo text,
     target_security numeric,
-    client_name varchar(30),
-    budget numeric,
-    id serial
+    client_name text,
+    budget numeric
   );
 
-  insert into targets(target_name, target_location, target_photo, target_security, client_name, budget, id)
+  insert into targets(target_name, target_location, target_photo, target_security, client_name, budget)
     values
-    ('Butch Coolidge', 'Los Angeles', 'https://goo.gl/LCquZj', 3, 'Marcellus Wallace', 40, 1),
-    ('The Jaguar', 'Russian Embassy', 'https://goo.gl/6JWsiv', 9, 'Concerto', 70, 2),
+    ('Butch Coolidge', 'Los Angeles', 'https://goo.gl/LCquZj', 3, 'Marcellus Wallace', 40),
+    ('The Jaguar', 'Russian Embassy', 'https://goo.gl/6JWsiv', 9, 'Concerto', 70),
     ('Norman Stansfield', 'Manhattan', 'https://i.imgur.com/mdIk33E.jpg', 7, 'Mathilda', 35),
     ('Santino DAntonio', 'Continental Hotel', 'https://goo.gl/fUPkYy', 10, 'Winston', 25),
     ('Sonny Valerio', 'Queens', 'https://goo.gl/8DHYUS', 4, 'Ray Vargo', 10);
+
+    create table clients (
+      name text,
+      id serial primary key
+    );
+
+    insert into clients (name)
+    values
+    ('Marcellus Wallace'),
+    ('Concerto'),
+    ('Mathilda'),
+    ('Winston'),
+    ('Ray Vargo');
+
+
+    create table contracts (
+      id serial primary key,
+      target_id integer references targets (id),
+      client_id integer references clients (id),
+      budget integer,
+      completed boolean Not NULL,
+      assassins_id integer references assassins (id)
+    );
+
+    insert into contracts (target_id, client_id, budget, completed, assassins_id)
+      values
+      (1, 1, 40, false, null),
+      (2, 2, 70, false, null),
+      (3, 3, 35, false, null),
+      (4, 4, 25, false, null),
+      (5, 5, 10, false, null);
+
 
 --table three
 create table assassins_contracts(
@@ -59,29 +95,12 @@ create table assassins_contracts(
           (3, 1);
 
 
-
---table four
-create table clients (
-  id serial primary key,
-  client_name text
-);
-
-insert into clients (id, client_name)
-values
-('Marcellus Wallace'),
-('Concerto'),
-('Mathilda'),
-('Winston'),
-('Ray Vargo')
-;
-
---table five
 create table code_names (
-  asn_id integer references assassins(id),
-  code_name text
+  assassins_id integer references assassins(id),
+  name text
 );
 
-insert into code_names (assassin_id, code_name)
+insert into code_names (assassins_id, name)
 values
 (1, 'The Jackal'),
 (2, 'Old Man'),
@@ -93,21 +112,10 @@ values
 (9, 'Solenya')
 ;
 
-create table contracts (
-  id serial primary key,
-  target_name foreign(targets.id),
-  Client_name foreign(clients.id),
-  budget numeric,
-  completed boolean,
-  completed_by foreign(assassins.id)
-);
-
-insert into contracts (target_name, Client_name, budget)
-  values
-  (default, 1, 1, 40, null),
-  (default, 2, 2, 70, null),
-  (default, 3, 3, 35, null),
-  (default, 4, 4, 25, null),
-  (default, 5, 5, 10, null);
 
 select * from assassins;
+select * from contracts;
+select * from targets;
+select * from clients;
+select * from code_names;
+select * from assassins_contracts;
