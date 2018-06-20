@@ -1,12 +1,13 @@
 --table one
 create table assassins(
+  id serial primary key,
   Full_Name text,
   Code_Names text,
   Weapon text,
-  Age numeric,
+  Age integer,
   Price numeric,
   Rating numeric(3,1),
-  Kills numeric);
+  Kills integer);
 
 
 insert into assassins(Full_Name, Code_Names, Weapon, Age, Price, Rating, Kills) values
@@ -22,6 +23,7 @@ insert into assassins(Full_Name, Code_Names, Weapon, Age, Price, Rating, Kills) 
 
  --table two
   create table targets(
+    id serial primary key,
     target_name text,
     target_location text,
     target_photo text,
@@ -66,11 +68,11 @@ create table clients (
 
 insert into clients (id, client_name)
 values
-(1, 'Marcellus Wallace'),
-(2, 'Concerto'),
-(3, 'Mathilda'),
-(4, 'Winston'),
-(5, 'Ray Vargo')
+('Marcellus Wallace'),
+('Concerto'),
+('Mathilda'),
+('Winston'),
+('Ray Vargo')
 ;
 
 --table five
@@ -79,7 +81,7 @@ create table code_names (
   code_name text
 );
 
-insert into code_names (asn_id, code_name)
+insert into code_names (assassin_id, code_name)
 values
 (1, 'The Jackal'),
 (2, 'Old Man'),
@@ -95,15 +97,17 @@ create table contracts (
   id serial primary key,
   target_name foreign(targets.id),
   Client_name foreign(clients.id),
-  budget numeric
-  completed boolean Not NULL,
+  budget numeric,
+  completed boolean,
   completed_by foreign(assassins.id)
 );
 
 insert into contracts (target_name, Client_name, budget)
   values
-  (1, 1, 40),
-  (2, 2, 70),
-  (3, 3, 35),
-  (4, 4, 25),
-  (5, 5, 10);
+  (default, 1, 1, 40, null),
+  (default, 2, 2, 70, null),
+  (default, 3, 3, 35, null),
+  (default, 4, 4, 25, null),
+  (default, 5, 5, 10, null);
+
+select * from assassins;
