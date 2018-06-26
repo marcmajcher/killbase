@@ -37,13 +37,13 @@ insert into assassins(Full_Name, Code_Names, Weapon, Age, Price, Rating, Kills) 
     budget numeric
   );
 
-  insert into targets(target_name, target_location, target_photo, target_security, client_name, budget)
+  insert into targets(target_name, target_location, target_photo, target_security)
     values
-    ('Butch Coolidge', 'Los Angeles', 'https://goo.gl/LCquZj', 3, 'Marcellus Wallace', 40),
-    ('The Jaguar', 'Russian Embassy', 'https://goo.gl/6JWsiv', 9, 'Concerto', 70),
-    ('Norman Stansfield', 'Manhattan', 'https://i.imgur.com/mdIk33E.jpg', 7, 'Mathilda', 35),
-    ('Santino DAntonio', 'Continental Hotel', 'https://goo.gl/fUPkYy', 10, 'Winston', 25),
-    ('Sonny Valerio', 'Queens', 'https://goo.gl/8DHYUS', 4, 'Ray Vargo', 10);
+    ('Butch Coolidge', 'Los Angeles', 'https://goo.gl/LCquZj', 3, 'Marcellus),
+    ('The Jaguar', 'Russian Embassy', 'https://goo.gl/6JWsiv', 9),
+    ('Norman Stansfield', 'Manhattan', 'https://i.imgur.com/mdIk33E.jpg', 7),
+    ('Santino DAntonio', 'Continental Hotel', 'https://goo.gl/fUPkYy', 10),
+    ('Sonny Valerio', 'Queens', 'https://goo.gl/8DHYUS', 4);
 
     create table clients (
       name text,
