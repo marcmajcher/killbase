@@ -122,6 +122,8 @@ SELECT COUNT(DISTINCT(assassinid)) FROM assassin_contracts;
 
 8) Find the lowest total cost to complete all assigned contracts.
 
+
+
 9) Add a new contract: Snake Plissken, New York, (find a photo), security 5, budget 35, Client is Marcellus Wallace.
 
 ```
