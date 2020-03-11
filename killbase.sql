@@ -92,8 +92,6 @@ INSERT INTO contracts (targetid, clientid, budget)
 (4, 4, 25),
 (5, 5, 10);
 
-
-
 INSERT INTO assassin_contracts (assassinid, contractid) VALUES
   (6, 1),
   (1, 2),
